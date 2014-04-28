@@ -1,15 +1,38 @@
-## Put comments here that give an overall description of what your
-## functions do
+## [The makeCacheMatrix function will get an input matrix, save the matrix as a list 
+## and find the inverse of the matrix and sets that value of the inverse of the matrix in Cache. 
+## The get cacheSolve function will check to see if the cache is empty and if it is not then 
+## it will pull the contents from the Cache and pass it to Inv and will print it on the screen.]
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x=matrix()) {
+	
+	Inv <- NULL
+  	set <- function(y) {
+    		x <<- y
+    		Inv <<- NULL
+  	}
+  	get <- function() x
+  	setInv <- function(k) Inv <<- k
+  	getInv <- function() Inv
+  	list(set = set, get = get, setInv = setInv, getInv = getInv)
 
 }
 
-
-## Write a short comment describing this function
+## when this function is called it first check if the cache is empty if its not empty then get the contents from
+## cached matrix and finds the inverse using the solve function. 
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+ 
+  	Inv <- x$getInv()
+  	if(!is.null(Inv)) {
+    		message("getting cached data")
+    		return(Inv)
+  	}
+  	data <- x$get()
+  	Inv <- solve(data)
+  	x$setInv(Inv)
+  	Inv
+
 }
+
+
+
