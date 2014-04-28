@@ -17,7 +17,7 @@ makeCacheMatrix <- function(x=matrix()) {
 
 }
 
-## when this function is called it first check if the cache is empty if its not empty then get the contents from
+## when this function is called it first checks to see if the cache is empty, if it is not empty then gets
 ## cached matrix and finds the inverse using the solve function. 
 
 cacheSolve <- function(x, ...) {
